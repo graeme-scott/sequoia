@@ -29,6 +29,8 @@ class LocationSearch extends React.Component {
         setTimeout(function() {
           searchInput.value = '';
         }, 300);
+      } else {
+        searchContainer.classList.remove('open');
       }
     } else {
       searchContainer.classList.add('open');
