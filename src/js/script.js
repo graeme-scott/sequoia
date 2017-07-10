@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WeatherApp from './weather/WeatherApp';
-import TodoApp from './todo/TodoApp';
- 
+import TaskManagerApp from './taskManager/TaskManagerApp';
+
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
     React.createElement(WeatherApp),
