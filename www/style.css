@@ -1,8 +1,13 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #eeeeee;
+  color: #546E7A;
+  background: #ECEFF1;
   font-family: 'Raleway', sans-serif;
+}
+
+button {
+  outline: 0;
 }
 
 .site-wrapper {
@@ -10,15 +15,44 @@ html, body {
   max-width: calc(100vw - 50px);
   min-height: calc(100vh - 50px);
   margin: 25px auto;
-  background: white;
+  background: #37474F;
   box-shadow: 0 0 55px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.site-content {
+  background: #fcfcfc;
 }
 
 .hero {
   position: relative;
-  padding: 100px 25px;
+  height: 400px;
   text-align: center;
-  transition: background 0.3s;
+  transition: height 0.3s;
+  pointer-events: all;
+}
+
+.hero.close-hero {
+  height: 0;
+  pointer-events: none;
+  transition: height 0.3s 0.12s;
+}
+
+.hero-content {
+  opacity: 1;
+  transition: opacity 0.3s 0.15s;
+}
+
+.close-hero .hero-content{
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.weather-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hero .hero-heading {
@@ -64,19 +98,13 @@ html, body {
   opacity: 1;
 }
 
-.weather-icon {
+.hero .weather-icon {
   margin: 0;
   color: white;
   font-family: weathericons;
   font-size: 120px;
   line-height: 150px;
   font-weight: 100;
-  opacity: 0.2;
-  transition: 0.3s;
-}
-
-.hero:hover .weather-icon {
-  opacity: 1;
 }
 
 .hero .hero-refresh span {
@@ -86,7 +114,7 @@ html, body {
 
 .hero-refresh .rotate {
   transform: rotate(-360deg);
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
 
 .thirtyDegrees {
@@ -119,7 +147,7 @@ html, body {
 
   position: absolute;
   top: 15px;
-  right: 25px;
+  right: 50px;
   text-align: right;
   opacity: 0;
   transition: opacity 0.3s;
@@ -161,7 +189,7 @@ html, body {
   position: absolute;
   margin: 0;
   top: 25px;
-  left: 35px;
+  left: 50px;
   color: white;
   font-family: 'Merriweather', serif;
   font-size: 16px;
@@ -170,39 +198,255 @@ html, body {
   transition: opacity 0.3s;
 }
 
-.todo {
+.task {
   padding: 50px;
 }
 
-.list-group-item {
+.task form {
+  width: 400px;
+}
+
+.list-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.task-card {
+  position: relative;
+  width: calc(33% - 25px);
+  margin-bottom: 40px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+.task-card-content {
+  padding: 25px;
+}
+
+.task-card-heading {
+  text-transform: uppercase;
+}
+
+.task-card-description {
+  white-space: pre-wrap;
+}
+
+.task-card.filler {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.task-description {
   display: block;
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 25px;
+  color: #546E7A;
+  background: transparent;
+  border: 1px solid #B0BEC5;
+  outline: 0;
+  font-size: 18px;
+  resize: vertical;
+}
+
+.list-group-item {
+  position: absolute;
   padding: 15px 0;
-  color: black;
-  border-bottom: 1px solid black;
+  top: 2px;
+  right: 15px;
+  color: #546E7A;
   text-decoration: none;
 }
 
-.todo-input {
-  padding: 10px 0;
-  margin-right: 15px;
-	border: 0;
-  color: black;
+.task-input {
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #B0BEC5;
+  color: #546E7A;
   background: transparent;
-	border-bottom: 1px solid black;
-	outline: 0;
+  outline: 0;
   font-size: 18px;
-	transition: width 0.3s, opacity 0.3s;
+  transition: width 0.3s, opacity 0.3s;
 }
 
-.todo-button {
+.task-button {
   appearance: none;
   -webkit-appearance: none;
 
-  padding: 0;
-  margin: 0 auto;
+  padding: 10px 20px;
   border: 0;
-  color: black;
-  background: transparent;
-  font-size: 25px;
+  color: white;
+  background: #689F38;
+  font-size: 15px;
   cursor: pointer;
+}
+
+.task-button-wrapper {
+  text-align: right;
+}
+
+.task-label-container {
+  padding: 15px 25px;
+  background: #ECEFF1;
+}
+
+.task-label-container .low {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: white;
+  background: #2196F3;
+  text-transform: uppercase;
+}
+
+.task-label-container .high {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: white;
+  background: #F44336;
+  text-transform: uppercase;
+}
+
+.task-label-container .none {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.task-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-footer {
+  padding: 50px;
+  color: white;
+  font-family: 'Amatic SC', cursive;
+  font-size: 42px;
+}
+
+.site-footer p {
+  margin-top: 5px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+}
+
+.task-modal {
+  position: fixed;
+  padding: 25px 50px;
+  top: 50%;
+  left: 50%;
+  background: white;
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s;
+}
+
+.task-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.task-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s;
+}
+
+.task-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.task-none-message {
+  padding: 150px 0 100px;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.list-group,
+.list-container {
+  margin-top: 50px;
+}
+
+.logo {
+  color: #689F38;
+}
+
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  background: #fcfcfc;
+}
+
+.weather-icon {
+  color: #546E7A;
+  font-family: weathericons;
+  text-decoration: none;
+  font-style: normal;
+}
+
+.weather-icon i {
+  margin-right: 5px;
+}
+
+.weather-icon span {
+  position: relative;
+  top: -4px;
+  left: 3px;
+  font-size: 10px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 15px;
+  color: #546E7A;
+}
+
+.select-wrapper {
+  position: relative;
+  padding-right: 15px;
+}
+
+.select-wrapper:after {
+  content: '\f078';
+  position: absolute;
+  top: 5px;
+  right: 0;
+  color: #546E7A;
+  font-family: FontAwesome;
+  font-size: 8px;
+  font-weight: 100;
+}
+
+.select-wrapper-label {
+  margin-right: 10px;
 }

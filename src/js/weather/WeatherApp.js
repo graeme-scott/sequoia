@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherItem from './api/WeatherItem';
 import LocationSearch from './LocationSearch';
+import Navigation from './Navigation';
 
 class WeatherApp extends React.Component {
   constructor() {
@@ -23,8 +24,7 @@ class WeatherApp extends React.Component {
   _handleSearch(location) {
     this.setState({
       isLoading: true,
-      errorMessage: undefined,
-      location: undefined
+      errorMessage: undefined
     });
 
     this._rotateRefresh();
@@ -79,33 +79,41 @@ class WeatherApp extends React.Component {
       heroClass: 'hero ' + gradient + 'Degrees'
     });
   }
- 
+
   render() {
-    let lastUpdated = new Date(); 
+    let lastUpdated = new Date();
     lastUpdated = "Last Updated: " + lastUpdated.getDate() + "/"
-                    + (lastUpdated.getMonth()+1)  + "/" 
-                    + lastUpdated.getFullYear() + " @ "  
-                    + ((lastUpdated.getHours() + 24) % 12 || 12) + ":"  
+                    + (lastUpdated.getMonth()+1)  + "/"
+                    + lastUpdated.getFullYear() + " @ "
+                    + ((lastUpdated.getHours() + 24) % 12 || 12) + ":"
                     + ((lastUpdated.getMinutes() < 10) ? '0' : '')
                     + lastUpdated.getMinutes()
                     + ((lastUpdated.getHours() > 12) ? 'PM' : 'AM');
 
     return (
-      <div className={this.state.heroClass}>
-        <h2 className="location-heading">{this.state.location}</h2>
-        <LocationSearch _handleSearch={this._handleSearch} />
+      <div>
+        <Navigation weatherIcon={this.state.iconClass} temp={this.state.temp} />
 
-        <p className={this.state.iconClass}></p>
+        <div className={this.state.heroClass}>
+          <div className="hero-content">
+            <h2 className="location-heading">{this.state.location}</h2>
+            <LocationSearch _handleSearch={this._handleSearch} />
 
-        <h2 className="hero-heading">
-          {this.state.temp}
-          <span>&deg;C</span>
-        </h2>
+            <div className="weather-container">
+              <p className={this.state.iconClass}></p>
 
-        <button className="hero-refresh" onClick={() => this._handleSearch(this.state.location)}>
-          {lastUpdated}
-          <span>&#8634;</span>
-        </button>
+              <h2 className="hero-heading">
+                {this.state.temp}
+                <span>&deg;C</span>
+              </h2>
+
+              <button className="hero-refresh" onClick={() => this._handleSearch(this.state.location)}>
+                {lastUpdated}
+                <span>&#8634;</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
