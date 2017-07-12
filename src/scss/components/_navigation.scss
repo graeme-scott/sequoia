@@ -1,0 +1,29 @@
+.logo {
+  color: $logo-color;
+}
+
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px $gutter-half;
+  background: $background-color;
+}
+
+.weather-icon {
+  color: $font-color;
+  font-family: weathericons;
+  text-decoration: none;
+  font-style: normal;
+}
+
+.weather-icon i {
+  margin-right: 5px;
+}
+
+.weather-icon span {
+  position: relative;
+  top: -4px;
+  left: 3px;
+  font-size: 10px;
+}

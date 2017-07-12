@@ -79,6 +79,7 @@ const TaskList = ({tasks, remove}) => {
         <div className="task-card filler" />
         <div className="task-card filler" />
         <div className="task-card filler" />
+        <div className="task-card filler" />
       </div>
     </div>);
   } else {
@@ -86,7 +87,7 @@ const TaskList = ({tasks, remove}) => {
   }
 }
 
-window.id = 0;
+window.id = 1;
 
 class TaskManagerApp extends React.Component{
   constructor(props){
@@ -98,6 +99,10 @@ class TaskManagerApp extends React.Component{
 
     this._handleFilter = this._handleFilter.bind(this);
     this._openModal = this._openModal.bind(this);
+  }
+
+  componentDidMount() {
+    document.querySelector('.loader-wrapper').classList.add('fade');
   }
 
   addTask(input, description, label){

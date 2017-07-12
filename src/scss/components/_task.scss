@@ -1,0 +1,200 @@
+.task {
+  padding: $gutter-half;
+}
+
+.task form {
+  width: 400px;
+}
+
+.list-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.task-card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+  background: $background-color-light;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+
+  @include media($min: $tablet-width) {
+    width: calc(50% - 25px);
+  }
+
+  @include media($min: $desktop-width) {
+    width: calc(25% - 25px);
+  }
+}
+
+.task-card-content {
+  height: 200px;
+  max-height: 200px;
+  padding: $gutter-small;
+}
+
+.task-card-heading {
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.task-card-description {
+  font-family: 'Merriweather', serif;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+.task-card.filler {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.task-description {
+  display: block;
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: $gutter-small;
+  color: $font-color;
+  background: transparent;
+  border: 1px solid $border-color;
+  outline: 0;
+  font-size: 18px;
+  resize: vertical;
+}
+
+.list-group-item {
+  position: absolute;
+  padding: 15px 0;
+  top: 2px;
+  right: 15px;
+  color: $font-color;
+  text-decoration: none;
+}
+
+.task-input {
+  padding: 10px;
+  margin-bottom: $gutter-small;
+  border: 1px solid $border-color;
+  color: $font-color;
+  background: transparent;
+  outline: 0;
+  font-size: 18px;
+  transition: width 0.3s, opacity 0.3s;
+}
+
+.task-button {
+  appearance: none;
+  -webkit-appearance: none;
+
+  position: relative;
+  padding: 10px 20px;
+  border: 0;
+  color: $button-font-color;
+  background: $button-color;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.task-button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 110%;
+  padding-bottom: 110%;
+  margin-left: -55%;
+  margin-top: -55%;
+  background: rgba(255,255,255, 0.3);
+  border-radius: 50%;
+  visibility: hidden;
+  transform: scale(0);
+}
+
+.task-button:not(:active):after {
+  animation: ripple 1s ease-out;
+}
+
+.task-button:focus:after {
+  visibility: visible;
+}
+
+.task-button:hover {
+  background: darken($button-color, 10%);
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.task-button-wrapper {
+  text-align: right;
+}
+
+.task-label-container {
+  padding: 15px $gutter-small;
+  background: $background-color-dark;
+}
+
+.task-label-container .low {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: $button-font-color;
+  background: $label-low-color;
+  text-transform: uppercase;
+}
+
+.task-label-container .high {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: $button-font-color;
+  background: $label-high-color;
+  text-transform: uppercase;
+}
+
+.task-label-container .none {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: $background-color-dark;
+}
+
+.hide {
+  display: none;
+}
+
+.task-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-none-message {
+  padding: 150px 0 $gutter;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.list-group,
+.list-container {
+  margin-top: $gutter-half;
+}

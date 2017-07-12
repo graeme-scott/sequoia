@@ -1,0 +1,131 @@
+.hero {
+  position: relative;
+  height: 400px;
+  text-align: center;
+  transition: height 0.3s;
+  pointer-events: all;
+
+  &:hover {
+    .hero-refresh,
+    .search-container,
+    .location-heading {
+      opacity: 1;
+    }
+  }
+
+  &.close-hero {
+    height: 2px;
+    pointer-events: none;
+    transition: height 0.3s 0.12s;
+  }
+}
+
+.hero-content {
+  opacity: 1;
+  transition: opacity 0.3s 0.15s;
+
+  .close-hero & {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}
+
+.weather-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-heading {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 72px;
+  font-weight: 500;
+  margin: 0 0 5px;
+}
+
+.hero-heading span {
+  position: relative;
+  top: 20px;
+  left: 5px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.hero-refresh {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  margin: 0 auto;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  line-height: 23px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.hero-refresh span {
+  margin-left: 10px;
+  font-size: 23px;
+}
+
+.hero-refresh .rotate {
+  transform: rotate(-360deg);
+  transition: transform 0.3s;
+}
+
+.hero .weather-icon {
+  margin: 0;
+  color: white;
+  font-family: weathericons;
+  font-size: 120px;
+  line-height: 150px;
+  font-weight: 100;
+}
+
+.location-heading {
+  position: absolute;
+  margin: 0;
+  top: 25px;
+  left: 50px;
+  color: white;
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.thirtyDegrees {
+	background: linear-gradient(45deg, #FB8C00, #B71C1C);
+}
+
+.twentyDegrees {
+	background: linear-gradient(45deg, #FFD54F, #FB8C00);
+}
+
+.fifteenDegrees {
+	background: linear-gradient(45deg, #FFD54F, #FFB300);
+}
+
+.tenDegrees {
+	background: linear-gradient(45deg, #039BE5, #80DEEA);
+}
+
+.fiveDegrees {
+	background: linear-gradient(45deg, #1A237E, #039BE5);
+}
+
+.zeroDegrees {
+	background: linear-gradient(45deg, #4A148C, #3949AB);
+}

@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  color: $font-color;
+  background: $background-color-dark;
+  font-family: 'Raleway', sans-serif;
+}
+
+.site-wrapper {
+  width: $design-width;
+  max-width: calc(100vw - 50px);
+  min-height: calc(100vh - 50px);
+  margin: $gutter-small auto;
+  background: $footer-color;
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.site-content {
+  background: $background-color;
+}
